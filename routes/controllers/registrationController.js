@@ -17,12 +17,4 @@ const registerUser = async ({request, response}) => {
   response.redirect("/auth/login");
 };
 
-const showLoginForm = async () => {
-
-}
-
-const login = async () => {
-
-};
-
-export { registerUser, login, showLoginForm, showRegisterForm }
+export { registerUser, showRegisterForm }
