@@ -2,8 +2,20 @@ const showMain = ({ render }) => {
   render("main.eta");
 };
 
-const createAccount;
+const showRegisterForm = async () => {
 
-const login;
+}
 
-export { showMain, createAccount, login };
+const createAccount = async () => {
+
+};
+
+const showLoginForm = async () => {
+
+}
+
+const login = async () => {
+
+};
+
+export { showMain, createAccount, login, showLoginForm, showRegisterForm };
