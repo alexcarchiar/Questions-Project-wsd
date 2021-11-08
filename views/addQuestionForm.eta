@@ -1,0 +1,15 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1>Add question</h1>
+<form method="POST" action="/questions">
+  Title:<br/>
+  <input type="text" name="title" /><br/>
+  Question:<br/>
+  <input type="textarea" name="question_text" /><br/>
+  <input type="submit" value="Login" />
+</form>
+<% if(it.rows){ %>
+    <% it.rows.forEach( el => { %>
+            <a href="/questions/<%= el.id %>"><li><%= el.question_text %></li></a>
+    <%   })%>
+<%}%>
