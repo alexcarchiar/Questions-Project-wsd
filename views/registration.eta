@@ -1,7 +1,9 @@
 <% layout("./layouts/layout.eta") %>
 
 <h1>Registration form</h1>
-
+<% if(it.error){%>
+    <p><%= it.error %></p>
+<%}%>
 <form method="POST" action="/auth/register">
   Email:<br/>
   <input type="email" name="email" /><br/>
