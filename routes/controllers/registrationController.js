@@ -17,7 +17,10 @@ const getUserData = async (request) => {
   };
 
 const showRegisterForm = async ({render}) => {
-    render("registration.eta")
+    let data = {
+        email: "",
+    }
+    render("registration.eta",data)
 }
 
 const registerUser = async ({request, response, render}) => {
@@ -25,9 +28,11 @@ const registerUser = async ({request, response, render}) => {
     const [passes, errors] = await validasaur.validate(userData,validationRules)
     if(!passes){
         let data = {
-            error: "Please make sure to be using an email and to have a password at least 4 chars long"
+            error: "Please make sure to be using an email and to have a password at least 4 chars long",
+            email: userData.email
         }
         render("registration.eta",data)
+        return
     } else {
         await userService.addUser(
             userData.email,
