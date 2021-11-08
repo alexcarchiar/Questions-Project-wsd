@@ -9,5 +9,5 @@ router.get("/", mainController.showMain);
 router.get("/auth/register", registrationController.showRegisterForm )
 router.post("/auth/register", registrationController.registerUser)
 router.get("/auth/login", loginController.showLoginForm)
-
+router.post("/auth/login", loginController.login)
 export { router };

@@ -9,3 +9,4 @@
   <input type="password" name="password" /><br/>
   <input type="submit" value="Login" />
 </form>
+<a href="/auth/register">Not yet registered? Register here.</a>
