@@ -5,7 +5,7 @@ const showLoginForm = ({ render }) => {
     render("login.eta");
   };
 
-const login = async ({ request, response, state }) => {
+const login = async ({ request, response, state, render }) => {
     const body = request.body({ type: "form" });
     const params = await body.value;
   
@@ -13,7 +13,10 @@ const login = async ({ request, response, state }) => {
       params.get("email"),
     );
     if (userFromDatabase.length != 1) {
-      response.redirect("/auth/login");
+        let data = {
+            error: "Login failed",
+        }
+      render("login.eta", data);
       return;
     }
   
@@ -24,7 +27,10 @@ const login = async ({ request, response, state }) => {
     );
   
     if (!passwordMatches) {
-      response.redirect("/auth/login");
+        let data = {
+            error: "Login failed",
+        }
+        render("login.eta", data);
       return;
     }
   
