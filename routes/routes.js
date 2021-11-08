@@ -6,4 +6,5 @@ const router = new Router();
 
 router.get("/", mainController.showMain);
 router.get("/auth/register", registrationController.showRegisterForm )
+router.post("/auth/register", registrationController.registerUser)
 export { router };
