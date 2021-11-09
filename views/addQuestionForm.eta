@@ -10,6 +10,6 @@
 </form>
 <% if(it.rows){ %>
     <% it.rows.forEach( el => { %>
-            <a href="/questions/<%= el.id %>"><li><%= el.question_text %></li></a>
+            <a href="/questions/<%= el.id %>"><li><%= el.title %></li></a>
     <%   })%>
 <%}%>

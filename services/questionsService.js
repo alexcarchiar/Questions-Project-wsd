@@ -19,4 +19,10 @@ const getAllQuestionsForUser = async (user_id) => {
     return result.rows
 }
 
-export { addQuestion, getAllQuestionsForUser }
+const getQuestionById = async (id) => {
+  const result = await executeQuery("SELECT * FROM questions WHERE id=$1;",
+  id)
+  return result.rows
+}
+
+export { addQuestion, getAllQuestionsForUser, getQuestionById }

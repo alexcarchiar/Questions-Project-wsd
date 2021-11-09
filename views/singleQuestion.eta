@@ -1,0 +1,7 @@
+<% layout("./layouts/layout.eta") %>
+<% if(it.error){%>
+    <p><%= it.error %>
+<%} else {%>
+    <h1><%=it.question.title%></h1>
+    <p><%=it.question.question_text%></p>
+<%}%>

@@ -1,5 +1,6 @@
 import * as questionsService from "../../services/questionsService.js"
 import { validasaur } from "../../deps.js"
+import { executeQuery } from "../../database/database.js";
 
 const validationRules = {
     title: [validasaur.minLength(1), validasaur.required],
@@ -58,4 +59,20 @@ const postQuestion = async ({request, response, render, state}) => {
   response.redirect("/questions");
 }
 
-export { showQuestionForm, postQuestion }
+const showSingleQuestion = async ({params, response, request, state, render }) => {
+    const questionId = params.id
+    const question = await questionsService.getQuestionById(questionId)
+    if(question.length < 1){
+        let data = {
+            error: "Can't find the question"
+        }
+        render("singleQuestion.eta",data)
+        return
+    }
+    let data = {
+        question: question[0],
+    }
+    render("singleQuestion.eta",data)
+}
+
+export { showQuestionForm, postQuestion, showSingleQuestion }

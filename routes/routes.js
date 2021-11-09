@@ -13,4 +13,5 @@ router.get("/auth/login", loginController.showLoginForm)
 router.post("/auth/login", loginController.login)
 router.get("/questions", questionsController.showQuestionForm)
 router.post("/questions", questionsController.postQuestion)
+router.get("/questions/:id", questionsController.showSingleQuestion)
 export { router };
