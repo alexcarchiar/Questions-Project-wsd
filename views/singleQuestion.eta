@@ -9,12 +9,10 @@
     <% if(it.options.length > 0) { %>
         <ul>
         <% it.options.forEach( el => { %>
-            <li>
-                <form method="POST" action="/questions/<%= it.question.id %>/options/<%= el.id%>/delete">
-                    <%= el.option_text %> is <%= el.is_correct %>
-                    <input type="submit" value="Delete option" />
-                </form>
-            </li>
+            <form method="POST" action="/questions/<%= it.question.id %>/options/<%= el.id%>/delete">
+                <%= el.option_text %> is <%= el.is_correct %> <input type="submit" value="Delete option" />
+            </form>
+            <br/>
         <%})%>
         </ul>
     <%} else {%>

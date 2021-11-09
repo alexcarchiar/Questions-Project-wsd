@@ -8,6 +8,8 @@
   <input type="textarea" name="question_text" /><br/>
   <input type="submit" value="Submit" />
 </form>
+<br/>
+<h1>Current questions</h1>
 <% if(it.rows){ %>
     <% it.rows.forEach( el => { %>
             <a href="/questions/<%= el.id %>"><li><%= el.title %></li></a>

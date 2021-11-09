@@ -30,4 +30,12 @@ const deleteQuestionById = async (id) => {
   id)
 }
 
-export { addQuestion, getAllQuestionsForUser, getQuestionById, deleteQuestionById }
+const getRandomQuestion = async () => {
+  let result = (await executeQuery("SELECT * FROM questions ORDER BY RANDOM() LIMIT 1;"))
+  if(result.rows.length === 0){
+    return undefined
+  }
+  return result.rows[0]
+}
+
+export { addQuestion, getAllQuestionsForUser, getQuestionById, deleteQuestionById, getRandomQuestion }

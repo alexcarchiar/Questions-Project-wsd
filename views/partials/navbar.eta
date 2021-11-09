@@ -1,0 +1,10 @@
+<nav>
+    <ul class="inline">
+        <li><a href="/">Home</a></li>
+        <li><a href="/auth/login">Login</a><br/></li>
+        <li><a href="/auth/register">Register</a></li>
+        <li><a href="/questions">Questions</a></li>
+        <li><a href="/quiz">Random question</a></li>
+        <li><a href="/statistics">Statistics</a></li>
+    </ul>
+</nav>

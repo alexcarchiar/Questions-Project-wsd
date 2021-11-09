@@ -1,7 +1,7 @@
 <% layout("./layouts/layout.eta") %>
 
 <h1>Questions application</h1>
-<ul>
-    <li><a href="/auth/login">Login</a><br/></li>
-    <li><a href="/auth/register">Register</a></li>
-</ul>
+<p>This app has been made as part of the <a href="wsd.cs.aalto.fi">Web Software Development course</a> at <a href="aalto.fi">Aalto university</a>.<br/>
+This app was made by <a href="alessandrochiarelli.com">Alessandro Chiarelli (aka "alexcarchiar")</a>.<br/>
+In order to use the app, create an account and feel free to test it.<br/>
+</p>
