@@ -21,4 +21,7 @@ router.post("/questions/:questionId/options/:optionId/delete", optionsController
 router.post("/questions/:id/delete", questionsController.deleteQuestion)
 router.get("/quiz", quizController.getRandomQuestion)
 router.get("/quiz/:id", quizController.getQuestionById)
+router.post("/quiz/:id/options/:optionId", quizController.answerQuestion)
+router.get("/quiz/:id/correct", quizController.showCorrect)
+router.get("/quiz/:id/incorrect", quizController.showIncorrect)
 export { router };
