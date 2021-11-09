@@ -14,6 +14,8 @@ const showStatistics = async ({render, request, state, response }) => {
     data.topUsers = (await statisticsService.findFiveUsersWithMostAnswers()).reverse()
     //getting num of answers for current user
     data.numAnswers = await statisticsService.getNumOfAnswers(user_id)
+    //getting num of right answers for current user
+    data.numRightAnswers = await statisticsService.getNumOfRightAnswers(user_id)
     console.log(data)
     render("/statistics.eta",data)
 }

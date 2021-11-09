@@ -19,4 +19,12 @@ const getNumOfAnswers = async (userId) => {
     return res.rows.length
 }
 
-export { findFiveUsersWithMostAnswers, getNumOfAnswers }
+const getNumOfRightAnswers = async (userId) => {
+    const res = await executeQuery(
+        `SELECT * FROM question_answers
+        WHERE user_id = $1 AND correct=$2;`,userId,true)
+    
+        return res.rows.length
+}
+
+export { findFiveUsersWithMostAnswers, getNumOfAnswers, getNumOfRightAnswers }
