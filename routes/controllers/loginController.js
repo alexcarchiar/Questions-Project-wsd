@@ -12,8 +12,8 @@ const login = async ({ request, response, state, render }) => {
     const userFromDatabase = await userService.findUserByEmail(
       params.get("email"),
     );
-    console.log(userFromDatabase)
-    if (!userFromDatabase[0] && userFromDatabase.length != 1) {
+
+    if (userFromDatabase.length === 0) {
         let data = {
             error: "Login failed",
         }
