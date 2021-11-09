@@ -57,17 +57,14 @@ const showCorrect = ({render}) => {
 const showIncorrect = async ({ render, params, response, request, state }) => {
     const question_id = params.id
     const options = (await optionsService.getOptions(question_id))
-    console.log(options)
     let data = {
         option: undefined,
     }
     options.forEach(el => {
-        console.log(el)
         if(el.is_correct === true){
             data.option = el
         }
     })
-    console.log(data)
     render("incorrect.eta",data)
 }
 
