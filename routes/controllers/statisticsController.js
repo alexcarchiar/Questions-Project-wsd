@@ -18,10 +18,16 @@ const showStatistics = async ({render, request, state, response }) => {
     //getting num of right answers for current user
     data.numRightAnswers = await statisticsService.getNumOfRightAnswers(user_id)
     //getting the num of answers to the user's questions
-    const questions = questionsService.getAllQuestionsForUser(user_id)
-    console.log(questions)
-    //data.numTotalAnswers = await statisticsService.getNumOfAnswersByUser(user_id)
-    console.log(data)
+    const questions = await questionsService.getAllQuestionsForUser(user_id)
+    let totNumReplies = 0
+
+    for(let i = 0; i<questions.length; i++){
+        let numReplies = await statisticsService.getNumOfAnswersForQuestion(questions[i].id)
+        totNumReplies = numReplies + totNumReplies
+    }
+
+    data.numTotalAnswers = totNumReplies
+
     render("/statistics.eta",data)
 }
 
