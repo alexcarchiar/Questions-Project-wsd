@@ -1,4 +1,5 @@
 import * as statisticsService from "../../services/statisticsService.js"
+import * as questionsService from "../../services/questionsService.js"
 
 const showStatistics = async ({render, request, state, response }) => {
     //getting userId to be used for queries; asking for login otherwise
@@ -16,6 +17,10 @@ const showStatistics = async ({render, request, state, response }) => {
     data.numAnswers = await statisticsService.getNumOfAnswers(user_id)
     //getting num of right answers for current user
     data.numRightAnswers = await statisticsService.getNumOfRightAnswers(user_id)
+    //getting the num of answers to the user's questions
+    const questions = questionsService.getAllQuestionsForUser(user_id)
+    console.log(questions)
+    //data.numTotalAnswers = await statisticsService.getNumOfAnswersByUser(user_id)
     console.log(data)
     render("/statistics.eta",data)
 }

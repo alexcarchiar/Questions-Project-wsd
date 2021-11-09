@@ -4,7 +4,7 @@
 <h2>Your stats</h2>
 <p>Total number of answers given: <%= it.numAnswers%></p>
 <p>Total number of correct answers: <%= it.numRightAnswers%></p>
-<h2>Your questions' stats</h2>
+<p>Your answers received <%= it.numTotalAnswers%> answers</p>
 <h2>Top users</h2>
 <% it.topUsers.forEach( el => { %>
     <p><%= el.email%> has answered <%= el.count %> times </p>

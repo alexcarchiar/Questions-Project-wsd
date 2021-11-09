@@ -9,6 +9,13 @@ const connectionPool = new Pool({
   password: "sX40biZQp4LdJ3ZfMl6vYe4xH5h0wI-Y",
   port: 5432,
 }, CONCURRENT_CONNECTIONS);
+/*const connectionPool = new Pool({
+  hostname: "hattie.db.elephantsql.com",
+  database: "gqushfld",
+  user: "gqushfld",
+  password: "AAzFQ26uo0gx7MXcjKwjOLY1NFqd62OJ-Y",
+  port: 5432,
+}, CONCURRENT_CONNECTIONS);*/
 
 const executeQuery = async (query, ...args) => {
   const response = {};
