@@ -1,5 +1,6 @@
 import * as optionsService from "../../services/optionsService.js"
 import * as questionsService from "../../services/questionsService.js"
+import * as answerService from "../../services/answerService.js"
 
 const getRandomQuestion = async ({ params, response }) => {
     const id = params.id
@@ -28,12 +29,26 @@ const getQuestionById = async ({ render, params, response }) => {
     }
 }
 
-const answerQuestion = async ({ render, params, response, request, state }) => {
+const answerQuestion = async ({ params, response, state }) => {
     const user_id = (await state.session.get("user")).id
     if(!user_id){
         response.redirect("/auth/login")
         return
     }
+    const question_id = params.id
+    const option_id = params.optionId
+    const option = (await optionsService.getOptionById(option_id))[0]
+    if(option.is_correct){
+        await answerService.addAnswer(user_id,question_id,option_id,true)
+        let path = "/quiz/" + question_id + "/correct"
+        response.redirect(path)
+    } else {
+        await answerService.addAnswer(user_id,question_id,option_id,false)
+        let path = "/quiz/" + question_id + "/incorrect"
+        response.redirect(path)
+    }
+
+
 }
 
 const showCorrect = ({render}) => {

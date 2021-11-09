@@ -18,4 +18,10 @@ const deleteOption = async (option_id) => {
     option_id)
 }
 
-export { addOption, getOptions, deleteOption }
+const getOptionById = async (option_id) => {
+    let result = await executeQuery("SELECT * FROM question_answer_options WHERE id=$1;",
+    option_id)
+    return result.rows
+}
+
+export { addOption, getOptions, deleteOption, getOptionById }
