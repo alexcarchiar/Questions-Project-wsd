@@ -1,0 +1,7 @@
+POST http://localhost:7777/api/questions/answer HTTP/1.1
+Content-Yype: application/json
+
+{
+  "questionId": 1,
+  "optionId": 3
+}
