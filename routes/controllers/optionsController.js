@@ -7,6 +7,7 @@ const validationRules = {
 }
 
 const getOptionData = async (request) => {
+    //getting option data from the request body
     const body = request.body({ type: "form" });
     const params = await body.value;
     let is_correct = false
@@ -20,6 +21,7 @@ const getOptionData = async (request) => {
  };
 
 const postOption = async ({request, response, render, state, params}) => {
+    //getting option data
     const optionData = await getOptionData(request)
     optionData.question_id = params.id
 
@@ -56,4 +58,30 @@ const postOption = async ({request, response, render, state, params}) => {
     response.redirect(path);
 }
 
-export { postOption }
+const deleteOption = async ({render, request, params, response, state}) => {
+    //getting user information for later check
+    const user_id = (await state.session.get("user")).id
+    if(!user_id){
+        response.redirect("/auth/login")
+        return
+    }
+    //getting question and option information
+    const question_id = params.questionId
+    const option_id = params.optionId
+    let question = (await questionsService.getQuestionById(question_id))[0]
+    if(user_id !== question.user_id){
+        //checking user has the right to do the operation
+        let data = {
+            error: "Sorry, but you can't delete options from questions not created by you",
+        }
+        render("singleQuestion.eta",data)
+        return
+    } else {
+        await optionsService.deleteOption(option_id)
+        //creating the path for redirection
+        let path = "/questions/" + question_id
+        response.redirect(path)
+    }
+}
+
+export { postOption, deleteOption }

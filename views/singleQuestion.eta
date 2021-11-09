@@ -6,12 +6,22 @@
     <h1><%=it.question.title%></h1>
     <p><%=it.question.question_text%></p>
     <h1>Current options</h1>
-    <% if(it.options) { %>
+    <% if(it.options.length > 0) { %>
         <ul>
         <% it.options.forEach( el => { %>
-            <li><%= el.option_text %> is <%= el.is_correct %></li>
+            <li>
+                <form method="POST" action="/questions/<%= it.question.id %>/options/<%= el.id%>/delete">
+                    <%= el.option_text %> is <%= el.is_correct %>
+                    <input type="submit" value="Delete option" />
+                </form>
+            </li>
         <%})%>
         </ul>
+    <%} else {%>
+        <form method="POST" action="/questions/<%= it.question.id %>/delete">
+            There are no options for this question<br/>
+            <input type="submit" value="Delete question" />
+        </form>
     <%}%>
     <h1>Add option</h1>
     <form method="POST" action="/questions/<%= it.question.id %>/options">
