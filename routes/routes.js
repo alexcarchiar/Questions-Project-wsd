@@ -6,6 +6,7 @@ import * as questionsController from "./controllers/questionsController.js"
 import * as optionsController from "./controllers/optionsController.js"
 import * as quizController from "./controllers/quizController.js"
 import * as statisticsController from "./controllers/statisticsController.js"
+import * as apiController from "./apis/apiController.js"
 
 const router = new Router();
 
@@ -26,4 +27,7 @@ router.post("/quiz/:id/options/:optionId", quizController.answerQuestion)
 router.get("/quiz/:id/correct", quizController.showCorrect)
 router.get("/quiz/:id/incorrect", quizController.showIncorrect)
 router.get("/statistics",statisticsController.showStatistics)
+router.get("/api/questions/random", apiController.getRandomQuestion)
+router.post("/api/questions/answer", apiController.answerQuestion)
+
 export { router };
