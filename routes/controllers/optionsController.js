@@ -1,4 +1,5 @@
 import * as optionsService from "../../services/optionsService.js"
+import * as questionsService from "../../services/questionsService.js"
 import { validasaur } from "../../deps.js"
 
 const validationRules = {
@@ -38,7 +39,14 @@ const postOption = async ({request, response, render, state, params}) => {
 
         return
     } else {
-
+        let question = await questionsService.getQuestionById(optionData.question_id)
+        if(user_id !== question.user_id){
+            let data = {
+                error: "Sorry, but you can't add options to questions not created by you",
+            }
+            render("singleQuestion.eta",data)
+            return
+        }
         await optionsService.addOption(
             optionData.question_id, optionData.option_text, optionData.is_correct
         );
