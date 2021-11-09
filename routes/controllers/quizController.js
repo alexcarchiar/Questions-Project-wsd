@@ -12,8 +12,22 @@ const getRandomQuestion = async ({ params, response }) => {
     }
 }
 
-const getQuestionById = async ({ render, params, response, request }) => {
+const getQuestionById = async ({ render, params, response, request, state }) => {
+    const questionId = params.id
+    const question = (await questionsService.getQuestionById(questionId))[0]
+    console.log(question)
+    console.log(question.title)
+    if(question === undefined){
+        response.body = "The question you're looking for does not exist"
+        return
+    } else {
+        let data = {
+            question: question,
+            options: await optionsService.getOptions(questionId)
+        }
+        render("quiz.eta", data)
+    }
 
 }
 
-export { getRandomQuestion }
+export { getRandomQuestion, getQuestionById }

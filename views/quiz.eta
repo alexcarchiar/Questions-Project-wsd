@@ -4,16 +4,12 @@
 <p><%=it.question.question_text%></p>
 <h1>Current options</h1>
 <% if(it.options.length > 0) { %>
-    <ul>
     <% it.options.forEach( el => { %>
-        <li>
-            <form method="POST" action="/questions/<%= it.question.id %>/options/<%= el.id%>/delete">
-                <%= el.option_text %> is <%= el.is_correct %>
-                <input type="submit" value="Delete option" />
-            </form>
-        </li>
+        <form method="POST" action="/questions/<%= it.question.id %>/options/<%= el.id%>/delete">
+            <%= el.option_text %> is <%= el.is_correct %>
+            <input type="submit" value="Delete option" />
+        </form>
     <%})%>
-    </ul>
 <%} else {%>
     <form method="POST" action="/questions/<%= it.question.id %>/delete">
         There are no options for this question<br/>
