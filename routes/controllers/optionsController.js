@@ -41,7 +41,7 @@ const postOption = async ({request, response, render, state, params}) => {
 
         return
     } else {
-        let question = await questionsService.getQuestionById(optionData.question_id)
+        let question = (await questionsService.getQuestionById(optionData.question_id))[0]
         if(user_id !== question.user_id){
             let data = {
                 error: "Sorry, but you can't add options to questions not created by you",

@@ -59,7 +59,7 @@ const postQuestion = async ({request, response, render, state}) => {
   response.redirect("/questions");
 }
 
-const showSingleQuestion = async ({params, response, request, state, render }) => {
+const showSingleQuestion = async ({params, render }) => {
     const questionId = params.id
     const question = await questionsService.getQuestionById(questionId)
     if(question.length < 1){
@@ -76,4 +76,28 @@ const showSingleQuestion = async ({params, response, request, state, render }) =
     render("singleQuestion.eta",data)
 }
 
-export { showQuestionForm, postQuestion, showSingleQuestion }
+const deleteQuestion = async ({params, state, response, render}) => {
+    //getting user information for later check
+    const user_id = (await state.session.get("user")).id
+    if(!user_id){
+        response.redirect("/auth/login")
+        return
+    }
+    //getting question and option information
+    const question_id = params.id
+    let question = (await questionsService.getQuestionById(question_id))[0]
+    if(user_id !== question.user_id){
+        //checking user has the right to do the operation
+        let data = {
+            error: "Sorry, but you can't delete a question not created by you",
+        }
+        render("singleQuestion.eta",data)
+        return
+    } else {
+        await questionsService.deleteQuestionById(question_id)
+        //creating the path for redirection
+        response.redirect("/questions")
+    }
+}
+
+export { showQuestionForm, postQuestion, showSingleQuestion, deleteQuestion }

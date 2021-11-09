@@ -17,4 +17,5 @@ router.post("/questions", questionsController.postQuestion)
 router.get("/questions/:id", questionsController.showSingleQuestion)
 router.post("/questions/:id/options", optionsController.postOption)
 router.post("/questions/:questionId/options/:optionId/delete", optionsController.deleteOption)
+router.post("/questions/:id/delete", questionsController.deleteQuestion)
 export { router };

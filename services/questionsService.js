@@ -25,4 +25,9 @@ const getQuestionById = async (id) => {
   return result.rows
 }
 
-export { addQuestion, getAllQuestionsForUser, getQuestionById }
+const deleteQuestionById = async (id) => {
+  await executeQuery("DELETE FROM questions WHERE id=$1;",
+  id)
+}
+
+export { addQuestion, getAllQuestionsForUser, getQuestionById, deleteQuestionById }
