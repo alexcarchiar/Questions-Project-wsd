@@ -12,7 +12,7 @@ const login = async ({ request, response, state, render }) => {
     const userFromDatabase = await userService.findUserByEmail(
       params.get("email"),
     );
-    if (userFromDatabase.length != 1) {
+    if (!userFromDatabase && userFromDatabase.length != 1) {
         let data = {
             error: "Login failed",
         }
