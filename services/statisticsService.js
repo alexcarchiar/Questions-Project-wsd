@@ -11,4 +11,12 @@ const findFiveUsersWithMostAnswers = async () => {
   return res.rows;
 };
 
-export { findFiveUsersWithMostAnswers }
+const getNumOfAnswers = async (userId) => {
+    const res = await executeQuery(
+    `SELECT * FROM question_answers
+    WHERE user_id = $1;`,userId)
+
+    return res.rows.length
+}
+
+export { findFiveUsersWithMostAnswers, getNumOfAnswers }
