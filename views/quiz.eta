@@ -2,17 +2,15 @@
 
 <h1><%=it.question.title%></h1>
 <p><%=it.question.question_text%></p>
-<h1>Current options</h1>
+<h1>Choose options</h1>
 <% if(it.options.length > 0) { %>
     <% it.options.forEach( el => { %>
-        <form method="POST" action="/questions/<%= it.question.id %>/options/<%= el.id%>/delete">
-            <%= el.option_text %> is <%= el.is_correct %>
-            <input type="submit" value="Delete option" />
+        <form method="POST" action="/quiz/<%= it.question.id %>/options/<%= el.id%>/delete">
+            <%= el.option_text %>
+            <input type="submit" value="Choose this one" />
         </form>
+        <br/>
     <%})%>
 <%} else {%>
-    <form method="POST" action="/questions/<%= it.question.id %>/delete">
-        There are no options for this question<br/>
-        <input type="submit" value="Delete question" />
-    </form>
+    There are no options for this question<br/>
 <%}%>

@@ -12,11 +12,10 @@ const getRandomQuestion = async ({ params, response }) => {
     }
 }
 
-const getQuestionById = async ({ render, params, response, request, state }) => {
+const getQuestionById = async ({ render, params, response }) => {
     const questionId = params.id
     const question = (await questionsService.getQuestionById(questionId))[0]
-    console.log(question)
-    console.log(question.title)
+
     if(question === undefined){
         response.body = "The question you're looking for does not exist"
         return
@@ -27,7 +26,34 @@ const getQuestionById = async ({ render, params, response, request, state }) => 
         }
         render("quiz.eta", data)
     }
-
 }
 
-export { getRandomQuestion, getQuestionById }
+const answerQuestion = async ({ render, params, response, request, state }) => {
+    const user_id = (await state.session.get("user")).id
+    if(!user_id){
+        response.redirect("/auth/login")
+        return
+    }
+}
+
+const showCorrect = ({render}) => {
+    render("correct.eta")
+}
+const showIncorrect = async ({ render, params, response, request, state }) => {
+    const question_id = params.id
+    const options = (await optionsService.getOptions(question_id))
+    console.log(options)
+    let data = {
+        option: undefined,
+    }
+    options.forEach(el => {
+        console.log(el)
+        if(el.is_correct === true){
+            data.option = el
+        }
+    })
+    console.log(data)
+    render("incorrect.eta",data)
+}
+
+export { getRandomQuestion, getQuestionById, answerQuestion, showCorrect, showIncorrect }
