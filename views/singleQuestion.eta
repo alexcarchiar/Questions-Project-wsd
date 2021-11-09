@@ -1,15 +1,24 @@
 <% layout("./layouts/layout.eta") %>
 <% if(it.error){%>
-    <p><%= it.error %>
+    <p><%= it.error %><br/>
+    <a href="javascript:history.back()">Go Back</a>
 <%} else {%>
     <h1><%=it.question.title%></h1>
     <p><%=it.question.question_text%></p>
+    <h1>Current options</h1>
+    <% if(it.options) { %>
+        <ul>
+        <% it.options.forEach( el => { %>
+            <li><%= el.option_text %> is <%= el.is_correct %></li>
+        <%})%>
+        </ul>
+    <%}%>
     <h1>Add option</h1>
-    <form method="POST" action="/questions/<%= it.id %>/options">
+    <form method="POST" action="/questions/<%= it.question.id %>/options">
     Option text:<br/>
     <input type="textarea" name="option_text" /><br/>
     Is this option correct?
     <input type="checkbox" name="is_correct" ></br>
-    <input type="submit" value="Login" />
+    <input type="submit" value="Submit" />
     </form>
 <%}%>

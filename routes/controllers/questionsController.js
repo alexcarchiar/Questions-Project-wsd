@@ -1,6 +1,6 @@
 import * as questionsService from "../../services/questionsService.js"
 import { validasaur } from "../../deps.js"
-import { executeQuery } from "../../database/database.js";
+import * as optionsService from "../../services/optionsService.js"
 
 const validationRules = {
     title: [validasaur.minLength(1), validasaur.required],
@@ -71,6 +71,7 @@ const showSingleQuestion = async ({params, response, request, state, render }) =
     }
     let data = {
         question: question[0],
+        options: await optionsService.getOptions(questionId),
     }
     render("singleQuestion.eta",data)
 }
