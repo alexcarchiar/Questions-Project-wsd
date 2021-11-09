@@ -4,4 +4,12 @@
 <%} else {%>
     <h1><%=it.question.title%></h1>
     <p><%=it.question.question_text%></p>
+    <h1>Add option</h1>
+    <form method="POST" action="/questions/<%= it.id %>/options">
+    Option text:<br/>
+    <input type="textarea" name="option_text" /><br/>
+    Is this option correct?
+    <input type="checkbox" name="is_correct" ></br>
+    <input type="submit" value="Login" />
+    </form>
 <%}%>
