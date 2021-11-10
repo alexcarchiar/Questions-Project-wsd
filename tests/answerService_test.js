@@ -45,7 +45,6 @@ Deno.test({
         let resultA = (await executeQuery("SELECT * FROM question_answers WHERE user_id=$1 AND question_id =$2 AND question_answer_option_id=$3;",
         user.id,questionAdded.id,optionAdded.id
         ))
-        console.log(resultA)
         assertExists(resultA.rows[0])
 
     },
