@@ -73,9 +73,12 @@ The project has the following structure:
   - errorMiddleware.js - used to log all errors as they come
   - renderMiddleware.js - used to render all .eta files to the user
   - serveStaticMiddleware.js - used to serve static files
-- services - it is the directory that is in charge of making queries to the database by making use of the file in the database directory. There are two files in this directory:
-  - issueService.js - service file for the project issues
-  - projectService.js - service file for the projects themselves
+- services - it is the directory that is in charge of making queries to the database by making use of the file in the database directory. It contains:
+  - answerService.js - service file for answers
+  - optionsService.js - service file for question options
+  - questionsService.js - service file for questions
+  - statisticsService.js - service file for retrieving user's statistics
+  - userService.js - service file for users
 - database - it is a directory that contains a single file named database.js which is in charge of interacting with the PostgreSQL database server.
 - views - it is a directory that contains the files used for rendering the HTML pages of the web app. It contains two files and a directory:
   - layouts - it is a directory that contains a single filed named layout.eta, used to implement the partials in the other .eta files
