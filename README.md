@@ -92,6 +92,11 @@ The project has the following structure:
   - registration.eta - file used for the sign up page
   - singleQuestion.eta - file used to show a single question to the user and the question's options, as well as adding options
   - statistics.eta - file used to show user's statistics
+- tests - it is a directory used to contain and execute the app's unit tests. There are in total 10 unit tests and they cover all of the files in the `services` directory. The names are self explanatory.
+
+## Running the tests
+In order to run the tests, you first need to set up a database configuration and make sure that all tables have at least one row. It is recommended to use a test database as the tests may add their own rows to the database. 
+Furthermore, check the comments inside every test file as there may be special requirements for the single test.
 
 ## Creator
 Alessandro Chiarelli - alessandro.chiarelli@aalto.fi - mail@alessandrochiarelli.com
