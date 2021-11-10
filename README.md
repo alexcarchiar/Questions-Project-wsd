@@ -67,7 +67,7 @@ The project has the following structure:
     - registrationController.js - it is in charge of letting people sign up into the web app
     - statisticsController.js - it is in charge of handling the statistics
   - routes.js - it is the file that builds the router for our application and makes use of all the controllers
-- databse - it is the directory that holds the database.js file which contains the database configuration. Please, put your configuration here if you want to run the app locally
+- database - it is the directory that holds the database.js file which contains the database configuration. Please, put your configuration here if you want to run the app locally
 - middlewares - it is the folder that contains the middlewares used by this application. It contains the following files/middlewares:
   - authMiddleware.js - used for authentication and access control
   - errorMiddleware.js - used to log all errors as they come
