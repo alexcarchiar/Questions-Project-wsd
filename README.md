@@ -79,11 +79,17 @@ The project has the following structure:
   - questionsService.js - service file for questions
   - statisticsService.js - service file for retrieving user's statistics
   - userService.js - service file for users
-- database - it is a directory that contains a single file named database.js which is in charge of interacting with the PostgreSQL database server.
-- views - it is a directory that contains the files used for rendering the HTML pages of the web app. It contains two files and a directory:
-  - layouts - it is a directory that contains a single filed named layout.eta, used to implement the partials in the other .eta files
-  - project.eta - it is a file that is used for rendering the web page for the single project view
-  - projects.eta - it is a file that is used for rendering the web page all of the projects in the database
+- views - it is a directory that contains the files used for rendering the HTML pages of the web app. It contains:
+  - layouts - it is a directory that contains a single file named layout.eta, used to implement the partials in the other .eta files
+  - partials - it is a directory that contains a single file named navbar.eta, used to add a navbar to all html pages
+  - addQuestionForm.eta - files for adding, deleting and showing the user's questions
+  - correct.eta - file used in case of correct answer to a quiz
+  - incorrect.eta - file used in case of incorrect answer to a quiz
+  - login.eta - file used to show the login page
+  - main.eta - file used for the root path
+  - registration.eta - file used for the sign up page
+  - singleQuestion.eta - file used to show a single question to the user and the question's options, as well as adding options
+  - statistics.eta - file used to show user's statistics
 
 ## Creator
 Alessandro Chiarelli - alessandro.chiarelli@aalto.fi - mail@alessandrochiarelli.com
