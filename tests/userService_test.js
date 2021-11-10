@@ -19,3 +19,4 @@ Deno.test({
     sanitizeResources: false,
     sanitizeOps: false,
 });
+//works
