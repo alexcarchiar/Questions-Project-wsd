@@ -51,13 +51,22 @@ The server will be running on localhost:7777; you can change the port if you wan
 
 The project has the following structure:
 
-- app.js - it is the main file of the server which is in charge of handling the HTTP requests
+- app.js - it is the main file of the server which is in charge of wrapping all the components together
+- run-locally.js - it is the file used to launch the app locally
 - README.md - the file you are currently reading
 - Procfile - the procfile used for Heroku deployment
 - runtime.txt - the file that specifies the deno version of the project
-- controllers - it is the folder that is in charge of responding to the different requests and interacting with the corresponding files in the server directory. There are two files in this directory:
-  - issueController.js - controller for the project issues
-  - projectController.js - controller for the projects themselves
+- routes - it is the folder that is in charge of handling the requests to server. There are one file and two directories:
+  - apis - it is the folder that is in charge of handling requests made to the api. It only contains one file, apiController.js that deals with such requests.
+  - controllers - it is the folder that is in charge of responding to the different requests made to the web app. It contains the following files:
+    - loginController.js - it is in charge of handling the login process for users
+    - mainController.js - it is in charge of handling requests to the root "/" path
+    - optionsController.js - it is in charge of handling requests dealing with answer options
+    - questionsController.js - it is in charge of handling requests dealing with question
+    - quizController.js - it is in charge of handling the requests made to the "/quiz/" path
+    - registrationController.js - it is in charge of letting people sign up into the web app
+    - statisticsController.js - it is in charge of handling the statistics
+  - routes.js - it is the file that builds the router for our application and makes use of all the controllers
 - services - it is the directory that is in charge of making queries to the database by making use of the file in the database directory. There are two files in this directory:
   - issueService.js - service file for the project issues
   - projectService.js - service file for the projects themselves
