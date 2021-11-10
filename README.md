@@ -53,6 +53,8 @@ The project has the following structure:
 
 - app.js - it is the main file of the server which is in charge of wrapping all the components together
 - run-locally.js - it is the file used to launch the app locally
+- heroku-deploy.js - it is the file used to deploy the app on Heroku
+- deps.js . it is the file used to put all dependency files in one place for all other files in the project
 - README.md - the file you are currently reading
 - Procfile - the procfile used for Heroku deployment
 - runtime.txt - the file that specifies the deno version of the project
