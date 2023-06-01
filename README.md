@@ -5,7 +5,7 @@ By Alessandro Chiarelli, developed for the course "Web Software Development"
 This project was developed as the second project for the "Web Software Development" course. The project is built with Deno, a runtime for JavaScript. The application also has some HTML written in the .eta files.
 
 ## Getting started
-The application is deployed to this link: https://quizzone-wsd.herokuapp.com/. If you want to run the server locally, you'll need to download deno and a PostgreSQL database.
+The application is deployed to this link: https://quizzone-wsd.herokuapp.com/. If you want to run the server locally, you'll need to download deno and a PostgreSQL database. **The link does not work anymore**
 
 In order to make the application work, you'll need to create these tables in your database.
 ```sql
